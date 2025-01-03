@@ -1,66 +1,65 @@
-# OpenLoop Decentralized bandwidth
+# OpenLoop 去中心化带宽共享
 
 ![banner](image.png)
 
-## OpenLoop Network is a decentralized wireless network built to enhance Internet service delivery, making it more efficient, accessible, and rewarding for everyone. 🤩
+## OpenLoop 网络是一个去中心化的无线网络，旨在提高互联网服务交付效率，使其对每个人来说都更高效、更易访问且更有回报。🤩
 
-- Website [https://openloop.so/](https://openloop.so/)
+- 官网 [https://openloop.so/](https://openloop.so/)
 - Twitter [@openloop_so](https://x.com/openloop_so)
 - Telegram [@openloop_updates](https://t.me/openloop_updates)
-- discord [https://discord.com/invite/75qBRaUczN](https://discord.com/invite/75qBRaUczN)
+- Discord [https://discord.com/invite/75qBRaUczN](https://discord.com/invite/75qBRaUczN)
 
-## Update
-- **auto update tokens if expired**:
-- fill email and pass to `accounts.txt`
+## 更新
+- **自动更新过期token**:
+- 将邮箱和密码填入 `accounts.txt`
    ![accounts.txt](image-2.png)
 
+## **功能特性**
 
-## **Features**
+- **注册账号**
+- **加载已有Token**: 如果已有账号，可以加载已有token
+- **自动Ping**
+- **自动Reff**
+- **支持多账号**
+- **支持代理**
 
-- **Register Accounts**
-- **Load Existing Tokens**: Load pre-existing tokens if you already have account.
-- **Auto Ping**
-- **Auto Reff**
-- **Support Multy Accounts**
-- **Support Proxy**
+## **环境要求**
 
-## **Requirements**
+- **Node.js**: 确保已安装Node.js
+- **npm**: 确保已安装npm
 
-- **Node.js**: Ensure you have Node.js installed.
-- **npm**: Ensure you have npm installed.
+## **确保账号和代理数量一致**
 
-## **make sure you have same number account and proxy**
+如果已有账号，可以将`access-token`放入`token.txt`，
 
-if you already have account you can put `access-token` to `token.txt`,
-
-put your proxy in file `proxy.txt` format `http://username:pass@ip:port`
+将代理信息放入`proxy.txt`，格式为`http://用户名:密码@ip:端口`
 
 ![intro](image-1.png)
 
-## Setup
+## 安装步骤
 
-1. Clone this repository:
+1. 克隆仓库：
    ```bash
-   git clone https://github.com/Zlkcyber/openloop.git
-   cd openloop
+   git clone https://github.com/huaguihai/OpenLoopBot.git
+   cd OpenLoopBot
    ```
-2. Install dependencies:
+2. 安装依赖：
    ```bash
    npm install
    ```
-3. Setup to create accounts and get Tokens:
+3. 设置账号并获取Token：
    ```bash
    npm run setup
    ```
-4. Run The Script:
+4. 运行脚本：
    ```bash
    npm run start
    ```
-5. Auto reff using temp mail
+5. 使用临时邮箱自动reff：
    ```bash
    npm run autoreff
    ```
 
 ## ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-This project is licensed under the [MIT License](LICENSE).
+本项目采用 [MIT 许可证](LICENSE)。

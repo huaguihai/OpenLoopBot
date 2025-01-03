@@ -2,11 +2,11 @@ import fs from 'fs';
 import fetch from 'node-fetch';
 import { logger } from './utils/logger.js';
 
-// Path to the accounts file and token file
+// 账号文件和token文件路径
 const filePath = './accounts.txt';
 const tokenFilePath = './token.txt';
 
-// Function to read and parse accounts
+// 读取并解析账号信息
 function readAccounts(filePath) {
     const accounts = [];
     const data = fs.readFileSync(filePath, 'utf-8');
@@ -23,16 +23,19 @@ function readAccounts(filePath) {
     return accounts;
 }
 
+// 获取token
 async function getToken() {
+    // 如果token文件已存在则删除
     if (fs.existsSync(tokenFilePath)) {
         fs.unlinkSync(tokenFilePath);
-        logger('Existing token.txt removed.');
+        logger('已删除现有的token.txt。');
     }
 
     const accounts = readAccounts(filePath);
 
+    // 遍历所有账号获取token
     for (const { email, password } of accounts) {
-        logger(`Email: ${email}, Password: ${password}`);
+        logger(`邮箱: ${email}, 密码: ${password}`);
         try {
             const loginPayload = { username: email, password };
             const loginResponse = await fetch('https://api.openloop.so/users/login', {
@@ -44,17 +47,18 @@ async function getToken() {
             });
 
             if (!loginResponse.ok) {
-                throw new Error(`Login failed! Status: ${loginResponse.status}`);
+                throw new Error(`登录失败! 状态: ${loginResponse.status}`);
             }
 
             const loginData = await loginResponse.json();
             const accessToken = loginData.data.accessToken;
-            logger('Login successful, Token:', 'success', accessToken);
+            logger('登录成功, Token:', 'success', accessToken);
 
+            // 将token保存到文件
             fs.appendFileSync(tokenFilePath, accessToken + '\n', 'utf8');
-            logger('Access token saved to token.txt');
+            logger('Access token已保存到token.txt');
         } catch (error) {
-            logger('Error during login:', 'error', error.message);
+            logger('登录时出错:', 'error', error.message);
         }
     }
 }
